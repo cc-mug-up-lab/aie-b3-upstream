@@ -4,7 +4,10 @@ def add(a: int, b: int) -> int:
     return a + b
 
 
-def multiply(a: int, b: int) -> int:
-    if not isinstance(a, int) or not isinstance(b, int):
-        raise TypeError("multiply requires integer arguments")
-    return a * b
+def multiply(a: int | float, b: int | float) -> int | float:
+    if not isinstance(a, (int, float)) or not isinstance(b, (int, float)):
+        raise TypeError("multiply requires numeric arguments")
+    result = a * b
+    if abs(result) > 1_000_000:
+        raise ValueError("multiplication overflow limit exceeded")
+    return result
