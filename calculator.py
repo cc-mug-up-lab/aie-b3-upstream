@@ -4,15 +4,11 @@ def add(a: int, b: int) -> int:
     return a + b
 
 
-def multiply(a: int | float, b: int | float) -> int | float:
-    if not isinstance(a, (int, float)) or not isinstance(b, (int, float)):
-        raise TypeError("multiply requires numeric arguments")
-    if a < 0 or b < 0:
-        raise ValueError("negative numbers are strictly prohibited")
-    result = a * b
-    if abs(result) > 1_000_000:
-        raise ValueError("multiplication overflow limit exceeded")
-    return result
+def multiply(a: int, b: int) -> int:
+    if not isinstance(a, int) or not isinstance(b, int):
+        raise TypeError("multiply requires integer arguments")
+    return a * b
+
 
 def divide(a: int | float, b: int | float) -> int | float:
     # 物理冲突点：在同一位置新增了函数
