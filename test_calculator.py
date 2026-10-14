@@ -12,7 +12,8 @@ def test_multiply():
     assert multiply(2, 3) == 6
 
 
-def test_multiply_negative():
-    assert multiply(-2, 3) == -6
+def test_multiply_rejects_non_numeric():
+    with pytest.raises(TypeError):
+        multiply("2", 3)
 
 
